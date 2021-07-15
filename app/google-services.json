@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "223050767709",
+    "project_id": "sahara-f6cd6",
+    "storage_bucket": "sahara-f6cd6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:223050767709:android:963d6fa05846c5f87b9cb4",
+        "android_client_info": {
+          "package_name": "com.example.sahara"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "223050767709-in6788qaobmggk4pvfkeuk8oltmj8itb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sahara",
+            "certificate_hash": "c391263bdcd23e4bacb52f34b50a3555bbfcecf9"
+          }
+        },
+        {
+          "client_id": "223050767709-6ocj97gr6n96oshb52na0rs8jp82ojoh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCsRRklbc5-Fa9IXVuZ9JE6Wi-xG4qkBw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "223050767709-6ocj97gr6n96oshb52na0rs8jp82ojoh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

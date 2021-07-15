@@ -1,0 +1,76 @@
+package com.example.sahara.Sellers;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.example.sahara.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
+public class SellerLoginActivity extends AppCompatActivity
+{
+    private Button loginSellerBtn;
+    private EditText emailInput,passwordInput;
+    private ProgressDialog loadingBar;
+    private FirebaseAuth mAuth;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_seller_login);
+        emailInput = findViewById(R.id.seller_login_email);
+        passwordInput = findViewById(R.id.seller_login_password);
+        loginSellerBtn = findViewById(R.id.seller_login_btn);
+        loadingBar = new ProgressDialog(this);
+        mAuth = FirebaseAuth.getInstance();
+
+        loginSellerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LoginSeller();
+            }
+        });
+    }
+
+    private void LoginSeller()
+    {
+        String email = emailInput.getText().toString();
+        String password = passwordInput.getText().toString();
+        if(!email.equals("")  && !password.equals("")  ) {
+
+            loadingBar.setTitle("Login Seller Account");
+            loadingBar.setMessage("Please wait while we are checking the credential");
+            loadingBar.setCanceledOnTouchOutside(false);
+            loadingBar.show();
+
+            mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if(task.isSuccessful()){
+
+                        Intent intent = new Intent(SellerLoginActivity.this, SellerHomeActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                        finish();
+                    }
+                }
+            });
+
+
+        }
+        else{
+            Toast.makeText(this, "Complete the Credentials", Toast.LENGTH_SHORT).show();
+        }
+    }
+}
